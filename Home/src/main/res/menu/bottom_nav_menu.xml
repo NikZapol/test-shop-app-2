@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home"
+        android:id="@+id/homeButton"
+        android:icon="@drawable/home_vector"/>
+    <item android:title="Favorites"
+        android:id="@+id/favoritesButton"
+        android:icon="@drawable/heart_vector"/>
+    <item android:title="Cart"
+        android:id="@+id/cartButton"
+        android:icon="@drawable/cart_vector"/>
+    <item android:title="Messenger"
+        android:id="@+id/MessengerButton"
+        android:icon="@drawable/messenger_vector"/>
+    <item android:title="Profile"
+        android:id="@+id/profileButton"
+        android:icon="@drawable/profile_vector"/>
+</menu>

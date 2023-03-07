@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "test-shop-app"
+include ':app'
+include ':LoginRegister'
+include ':Home'
