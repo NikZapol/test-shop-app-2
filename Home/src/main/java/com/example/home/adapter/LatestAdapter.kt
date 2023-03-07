@@ -42,7 +42,9 @@ class LatestAdapter: RecyclerView.Adapter<LatestAdapter.MyViewHolder>() {
         val currentLatest = latEst[position]
 
         holder.binding.apply {
-            textView.text = currentLatest.name
+            nameTextView.text = currentLatest.name
+            categoryTextView.text = currentLatest.category
+            priceTextView.text = currentLatest.price.toString()
             imageView.load(currentLatest.image_url) {
                 crossfade(true)
                 crossfade(1000)
