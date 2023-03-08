@@ -43,6 +43,7 @@
                 android:fontFamily="@font/montserrat_regular"
                 android:padding="5dp"
                 android:text="Category"
+
                 android:textColor="#070604"
                 android:textStyle="bold"
                 android:textSize="8sp" />
