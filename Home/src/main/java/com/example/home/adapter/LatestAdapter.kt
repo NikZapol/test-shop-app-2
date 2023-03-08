@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.home.databinding.LatestLayoutAdapterBinding
+import com.example.home.databinding.ItemLatestRvBinding
 import com.example.home.models.Latest
 
 class LatestAdapter: RecyclerView.Adapter<LatestAdapter.MyViewHolder>() {
 
-    inner class MyViewHolder(val binding: LatestLayoutAdapterBinding):
+    inner class MyViewHolder(val binding: ItemLatestRvBinding):
         RecyclerView.ViewHolder(binding.root)
 
     private val diffCallback = object : DiffUtil.ItemCallback<Latest>(){
@@ -33,7 +33,7 @@ class LatestAdapter: RecyclerView.Adapter<LatestAdapter.MyViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LatestLayoutAdapterBinding.inflate(
+        return MyViewHolder(ItemLatestRvBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         ))
     }
@@ -42,7 +42,13 @@ class LatestAdapter: RecyclerView.Adapter<LatestAdapter.MyViewHolder>() {
         val currentLatest = latEst[position]
 
         holder.binding.apply {
-            textView.text = currentLatest.name
+            nameTextView.text = currentLatest.name
+            categoryTextView.text = currentLatest.category
+
+            val price = currentLatest.price
+            val formattedPrice = String.format("$%,d", price)
+            priceTextView.text = formattedPrice
+
             imageView.load(currentLatest.image_url) {
                 crossfade(true)
                 crossfade(1000)
