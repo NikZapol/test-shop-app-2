@@ -46,7 +46,7 @@ class LatestAdapter: RecyclerView.Adapter<LatestAdapter.MyViewHolder>() {
             categoryTextView.text = currentLatest.category
 
             val price = currentLatest.price
-            val formattedPrice = String.format("$%,d", price)
+            val formattedPrice = String.format("$ %,d", price)
             priceTextView.text = formattedPrice
 
             imageView.load(currentLatest.image_url) {

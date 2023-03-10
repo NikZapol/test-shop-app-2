@@ -1,5 +1,6 @@
 package com.example.home.di
 
+import androidx.room.Room
 import com.example.home.api.ApiService
 import com.example.home.helper.Constants
 import dagger.Module
@@ -17,6 +18,7 @@ object AppModule {
 
     @Provides
     fun provideBaseUrl()=Constants.BASE_URL
+
 
     @Provides
     @Singleton

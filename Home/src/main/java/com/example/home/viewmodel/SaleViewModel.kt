@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.home.models.Latest
+import com.example.home.models.Sale
 import com.example.home.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,27 +15,27 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class LatestViewModel
+class SaleViewModel
     @Inject
     constructor
         (private val repository: Repository):ViewModel() {
 
-            private val _response = MutableLiveData<List<Latest>>()
+            private val _response = MutableLiveData<List<Sale>>()
 
-            val responseLatest:LiveData<List<Latest>>
+            val responseSale:LiveData<List<Sale>>
                 get() = _response
 
             init {
-                getAllLatest()
+                getAllSale()
             }
 
-    private fun getAllLatest() = viewModelScope.launch {
-        repository.getLatest().let { response ->
+    private fun getAllSale() = viewModelScope.launch {
+        repository.getSale().let { response ->
 
             if (response.isSuccessful) {
-                _response.postValue(response.body()?.latest)
+                _response.postValue(response.body()?.flash_sale)
             }else{
-                Log.d("tag","getAllLatest Error: ${response.code()}")
+                Log.d("tag","getAllSale Error: ${response.code()}")
             }
         }
     }

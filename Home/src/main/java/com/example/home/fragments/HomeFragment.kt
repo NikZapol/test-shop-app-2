@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.home.R
 import com.example.home.adapter.LatestAdapter
+import com.example.home.adapter.SaleAdapter
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.viewmodel.LatestViewModel
+import com.example.home.viewmodel.SaleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,8 +26,10 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: LatestViewModel by viewModels()
+    private val viewModelLatest: LatestViewModel by viewModels()
+    private val viewModelSale: SaleViewModel by viewModels()
     private lateinit var latestAdapter: LatestAdapter
+    private lateinit var saleAdapter: SaleAdapter
     private lateinit var categoryRv: RecyclerView
 
     override fun onCreateView(
@@ -59,6 +63,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpRv() {
         latestAdapter = LatestAdapter()
+        saleAdapter = SaleAdapter()
 
         binding.latestRv.apply {
             adapter = latestAdapter
@@ -71,7 +76,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.rvSale.apply {
-            adapter = latestAdapter
+            adapter = saleAdapter
             layoutManager = LinearLayoutManager(
                 requireContext(),
                 LinearLayoutManager.HORIZONTAL,
@@ -90,9 +95,15 @@ class HomeFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-        viewModel.responseLatest.observe(viewLifecycleOwner, { listLatest ->
-            latestAdapter.latEst = listLatest
+
+        viewModelLatest.responseLatest.observe(viewLifecycleOwner, { listLatest ->
+            latestAdapter.latEst = listLatest // Assigning the list of Latest items to latestAdapter
         })
+
+        viewModelSale.responseSale.observe(viewLifecycleOwner, { listSale ->
+            saleAdapter.saleList = listSale // Assigning the list of Sale items to saleAdapter
+        })
+
     }
     class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 

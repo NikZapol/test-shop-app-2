@@ -12,8 +12,12 @@ import androidx.lifecycle.lifecycleScope
 import com.example.loginregister.database.AppDatabase
 import com.example.loginregister.database.UserViewModel
 import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             loginUser()
         }
+
     }
 
     private fun loginUser() {
@@ -62,19 +67,14 @@ class LoginActivity : AppCompatActivity() {
             if (user != null && user.email == email && user.password == password ) {
                 // login successful, do something
                 Toast.makeText(applicationContext, "Вы успешно вошли в систему", Toast.LENGTH_LONG).show()
+                val userViewModel = ViewModelProvider(this@LoginActivity).get(UserViewModel::class.java)
+                userViewModel.setUser(user)
+
+
                 val intent = Intent(this@LoginActivity, com.example.home.HomePage1::class.java)
                 startActivity(intent)
                 finish()
 
-
-                // get the ViewModel instance
-                val userViewModel = ViewModelProvider(this@LoginActivity).get(UserViewModel::class.java)
-
-                // set the user information
-                userViewModel.firstName = "John"
-                userViewModel.lastName = "Doe"
-                userViewModel.email = "johndoe@example.com"
-                userViewModel.password = "password123"
 
             } else {
                 // login failed, show an error message

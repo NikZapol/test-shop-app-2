@@ -1,6 +1,5 @@
 package com.example.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +22,7 @@ class HomePage1 : AppCompatActivity() {
         binding = ActivityHomePage1Binding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigation.selectedItemId = R.id.homeButton
+
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, homeFragment)
