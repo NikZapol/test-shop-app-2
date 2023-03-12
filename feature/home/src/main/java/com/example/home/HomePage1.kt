@@ -26,14 +26,14 @@ class HomePage1 : AppCompatActivity() {
         setContentView(binding.root)
         binding.bottomNavigation.selectedItemId = R.id.homeButton
 
+        // Retrieve the user object from the intent extras
+        val user = intent.getParcelableExtra<User>("user")
+
         // Initialize the UserViewModel
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        // Get the user data from the intent extra
-        val user = intent?.extras?.getParcelable<User>("USER")
-        if (user != null) {
-            userViewModel.user = user
-        }
+        // Set the user object in the UserViewModel
+        userViewModel.user = user
 
 
         supportFragmentManager.beginTransaction()

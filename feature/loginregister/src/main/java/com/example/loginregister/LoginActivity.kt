@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.core.database.AppDatabase
+import com.example.home.HomePage1
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -62,19 +63,9 @@ class LoginActivity : AppCompatActivity() {
             if (user != null && user.email == email && user.password == password ) {
                 // login successful, do something
                 Toast.makeText(applicationContext, "Вы успешно вошли в систему", Toast.LENGTH_LONG).show()
-
-
-
-                // Assuming you have a user object named "user"
-                val bundle = Bundle().apply {
-                    putString("firstname", user.firstname)
-                    putString("lastname", user.lastname)
-                    putString("email", user.email)
-                    putString("password", user.password)
-                }
-
-                val intent = Intent(this@LoginActivity, com.example.home.HomePage1::class.java).apply {
-                    putExtras(bundle)
+                // login successful, pass the user object as an extra in the intent
+                val intent = Intent(this@LoginActivity, HomePage1::class.java).apply {
+                    putExtra("user", user)
                 }
                 startActivity(intent)
                 finish()
