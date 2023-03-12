@@ -10,6 +10,9 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)
 
+    @Query("UPDATE users SET profileImage = :profileImage WHERE id = :userId")
+    suspend fun updateProfileImage(userId: Int, profileImage: String)
+
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     suspend fun getUserByEmail(email: String): User?
 

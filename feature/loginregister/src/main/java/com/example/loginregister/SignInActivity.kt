@@ -93,7 +93,8 @@ class SignInActivity : AppCompatActivity() {
                     firstname = firstname,
                     lastname = lastname,
                     email = email,
-                    password = password
+                    password = password,
+                    profileImage = null
                 )
 
 

@@ -11,7 +11,8 @@ data class User(
     val firstname: String,
     val lastname: String,
     val email: String,
-    val password: String
+    val password: String,
+    val profileImage: String? // New field for profile image path
 )  : Parcelable {
 
     constructor(parcel: Parcel) : this(
@@ -19,7 +20,8 @@ data class User(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
-        parcel.readString()!!
+        parcel.readString()!!,
+        parcel.readString()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -28,6 +30,7 @@ data class User(
         parcel.writeString(lastname)
         parcel.writeString(email)
         parcel.writeString(password)
+        parcel.writeString(profileImage)
     }
 
     override fun describeContents(): Int {
