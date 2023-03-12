@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:labelVisibilityMode="unlabeled"
-        app:itemBackground="@drawable/bg_bottom_nav_item_selected"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>

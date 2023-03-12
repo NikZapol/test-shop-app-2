@@ -3,9 +3,14 @@
 
     <application>
         <activity
-            android:name=".MainActivity"
+            android:name=".shared.SignInActivity"
             android:exported="false" />
         <activity android:name=".HomePage1" />
+
+        <activity
+            android:name=".shared.LoginActivity"
+            android:exported="false" />
+
 
     </application>
 

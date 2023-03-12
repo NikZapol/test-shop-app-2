@@ -1,4 +1,4 @@
-package com.example.loginregister
+package com.example.home.shared
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.example.loginregister.databinding.ActivitySigninBinding
+import com.example.home.databinding.ActivitySigninBinding
 import kotlinx.coroutines.launch
 
 class SignInActivity : AppCompatActivity() {
