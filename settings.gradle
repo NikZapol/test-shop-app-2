@@ -8,5 +8,7 @@ pluginManagement {
 
 rootProject.name = "test-shop-app"
 include ':app'
-include ':LoginRegister'
-include ':Home'
+include ':core'
+include ':feature'
+include ':feature:home'
+include ':feature:loginregister'
