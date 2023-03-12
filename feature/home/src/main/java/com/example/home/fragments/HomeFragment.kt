@@ -62,48 +62,60 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpRv() {
-        latestAdapter = LatestAdapter()
-        saleAdapter = SaleAdapter()
-
-        binding.latestRv.apply {
-            adapter = latestAdapter
-            layoutManager = LinearLayoutManager(
-                requireContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-            setHasFixedSize(true)
-        }
-
-        binding.rvSale.apply {
-            adapter = saleAdapter
-            layoutManager = LinearLayoutManager(
-                requireContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-            setHasFixedSize(true)
-        }
-
-        binding.rvBrands.apply {
-            adapter = latestAdapter
-            layoutManager = LinearLayoutManager(
-                requireContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-            setHasFixedSize(true)
-        }
-
+        binding.latestRv.visibility = View.GONE
+        binding.rvSale.visibility = View.GONE
 
         viewModelLatest.responseLatest.observe(viewLifecycleOwner, { listLatest ->
-            latestAdapter.latEst = listLatest // Assigning the list of Latest items to latestAdapter
+            if (!::latestAdapter.isInitialized){
+                latestAdapter=LatestAdapter()
+            }
+            latestAdapter.latEst = listLatest
+            checkDataAvailability()
         })
 
         viewModelSale.responseSale.observe(viewLifecycleOwner, { listSale ->
-            saleAdapter.saleList = listSale // Assigning the list of Sale items to saleAdapter
+            if (!::saleAdapter.isInitialized) {  // check if saleAdapter has been initialized
+                saleAdapter = SaleAdapter()  // initialize saleAdapter
+            }
+            saleAdapter.saleList = listSale
+            checkDataAvailability()
         })
+    }
 
+    private fun checkDataAvailability() {
+        if (viewModelLatest.responseLatest.value != null && viewModelSale.responseSale.value != null) {
+            binding.latestRv.apply {
+                visibility = View.VISIBLE
+                adapter = latestAdapter
+                layoutManager = LinearLayoutManager(
+                    requireContext(),
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                setHasFixedSize(true)
+            }
+
+            binding.rvSale.apply {
+                visibility = View.VISIBLE
+                adapter = saleAdapter
+                layoutManager = LinearLayoutManager(
+                    requireContext(),
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                setHasFixedSize(true)
+            }
+
+            binding.rvBrands.apply {
+                adapter = latestAdapter
+                layoutManager = LinearLayoutManager(
+                    requireContext(),
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                setHasFixedSize(true)
+            }
+        }
     }
     class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
