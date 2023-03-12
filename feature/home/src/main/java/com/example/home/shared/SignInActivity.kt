@@ -28,7 +28,7 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.signinapplelayout.setOnClickListener {
+/*        binding.signinapplelayout.setOnClickListener {
             lifecycleScope.launch {
                 val userDao = com.example.core.database.AppDatabase.getInstance(applicationContext).userDao()
                 userDao.deleteAllUsers()
@@ -49,7 +49,7 @@ class SignInActivity : AppCompatActivity() {
                     Log.d("my-tag", "User: $user")
                 }
             }
-        }
+        }*/
 
 
     }
