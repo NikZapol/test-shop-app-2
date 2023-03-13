@@ -18,5 +18,5 @@ Coroutines, LiveData - для поддержания работы Room и для
 https://docs.google.com/document/d/1X92XL_aIOJzmk87Tg2rqqE836jHXjR-M/edit
 
 Видео приложения: 
-https://user-images.githubusercontent.com/90863647/224850709-188d7da2-844d-4087-8b87-c5585b7b3747.mp4
+https://youtu.be/qAQgiwWwokM
 
